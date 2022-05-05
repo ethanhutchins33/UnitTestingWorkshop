@@ -2,11 +2,14 @@
 
 namespace UnitTestingWorkshopTwo
 {
-    public class OrderBuilder: IOrderBuilder
+    public class OrderBuilder : IOrderBuilder
     {
+        private Order _order;
+
         public IOrderBuilder Init()
         {
-            throw new NotImplementedException();
+            _order = new Order();
+            return this;
         }
 
         public IOrderBuilder AddItems(int numItems)
@@ -16,12 +19,16 @@ namespace UnitTestingWorkshopTwo
 
         public IOrderBuilder ShipTo(string contact, string address)
         {
-            throw new NotImplementedException();
+            _order.ContactName = contact;
+            _order.ShippingAddress = address;
+            return this;
         }
 
         public Order Build()
         {
-            throw new NotImplementedException();
+            if (_order == null)
+                throw new InvalidOperationException("Must initialise before building");
+            return _order;
         }
     }
 }
