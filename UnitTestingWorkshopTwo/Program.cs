@@ -2,15 +2,15 @@
 
 namespace UnitTestingWorkshopTwo
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("---Ordering system initialised---");
 
-            IOrderBuilder orderBuilder = new OrderBuilder();
+            IOrderBuilder orderBuilder = new OrderBuilder(new OrderItemRepo());
 
-            Order order = orderBuilder
+            var order = orderBuilder
                 .Init()
                 .AddItems(3)
                 .ShipTo("Sara", "Taunton")

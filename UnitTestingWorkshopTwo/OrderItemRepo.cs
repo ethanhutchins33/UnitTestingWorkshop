@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnitTestingWorkshopTwo
 {
-    class OrderItemRepo
+    public interface IOrderItemRepo
     {
-        private readonly string[] items = new[]
+        string GetRandomItem();
+    }
+
+    public class OrderItemRepo : IOrderItemRepo
+    {
+        private readonly string[] _items =
         {
             "Shoes",
             "Hat",
@@ -23,8 +24,8 @@ namespace UnitTestingWorkshopTwo
 
         public string GetRandomItem()
         {
-            var index = new Random().Next(0, items.Length - 1);
-            return items[index];
+            var index = new Random().Next(0, _items.Length - 1);
+            return _items[index];
         }
     }
 }
