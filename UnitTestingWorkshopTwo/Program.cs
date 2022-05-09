@@ -8,7 +8,7 @@ namespace UnitTestingWorkshopTwo
         {
             Console.WriteLine("---Ordering system initialised---");
 
-            IOrderBuilder orderBuilder = new OrderBuilder(new OrderItemRepo());
+            IOrderBuilder orderBuilder = new OrderBuilder(new OrderItemRepo(), new DateTimeFacade());
 
             var order = orderBuilder
                 .Init()
